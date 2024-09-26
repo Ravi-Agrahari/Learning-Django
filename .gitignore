@@ -1,0 +1,25 @@
+# Python cache files
+__pycache__/
+*.py[cod]
+
+# Django specific files
+*.log
+*.pot
+*.pyc
+db.sqlite3  # If you are using SQLite
+/media/  # If you have a media folder for uploaded files
+
+# Virtual environment
+.venv/
+venv/
+ENV/
+env/
+
+# Environment variables
+.env
+
+# IDE specific files
+.idea/
+.vscode/
+*.swp
+.DS_Store
