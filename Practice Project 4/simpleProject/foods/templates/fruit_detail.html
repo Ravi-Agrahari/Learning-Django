@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ fruit.fruit_name }} - Fruit Details</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+
+    <!-- Header -->
+    <header class="bg-green-600 text-white text-center py-6 shadow-md">
+        <h1 class="text-4xl font-bold">{{ fruit.fruit_name }}</h1>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto my-10 px-4">
+        <div class="bg-white shadow-lg rounded-lg overflow-hidden flex flex-col md:flex-row">
+            
+            <!-- Fruit Image -->
+            <div class="md:w-1/2">
+                <img src="{{ fruit.fruit_image.url }}" alt="{{ fruit.fruit_name }}" class="w-full h-96 object-cover">
+            </div>
+
+            <!-- Fruit Information -->
+            <div class="md:w-1/2 p-8">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">{{ fruit.fruit_name }}</h2>
+                <p class="text-gray-600 mb-6 text-lg">{{ fruit.fruit_description }}</p>
+
+                <div class="flex items-center space-x-4">
+                    <span class="text-xl font-semibold text-green-600">Calories:</span>
+                    <span class="text-2xl font-bold text-gray-800">{{ fruit.calories }} kcal</span>
+                </div>
+
+                <a href="/foods/fruits/" class="mt-8 inline-block bg-green-600 text-white py-3 px-6 rounded-lg shadow-md hover:bg-green-700 transition duration-300">Back to Gallery</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white text-center py-4">
+        <p>© 2024 Fruit Gallery. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

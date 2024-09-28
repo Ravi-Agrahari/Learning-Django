@@ -1,0 +1,55 @@
+
+{% load static tailwind_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fruits Gallery</title>
+    {% tailwind_css %}
+    {% comment %} <script src="https://cdn.tailwindcss.com"></script> {% endcomment %}
+</head>
+<body class="bg-gray-100">
+
+    <!-- Header -->
+    <header class="bg-green-500 text-white text-center py-4">
+        <h1 class="text-3xl font-bold">Fruits Gallery</h1>
+        <p class="text-lg">Explore the world of fruits and their benefits</p>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto py-8 px-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+            {% for data in fruits_datas %}
+            
+                <!-- Fruit Card 1 -->
+                <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+                    <img src="{{data.fruit_image.url}}" alt="Apple" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-2xl font-semibold">
+                            {{data.fruit_name}}  </h3>
+                        <p class="mt-2 text-gray-600"> {{data.fruit_description}}</p>
+                    </div>
+                    <div class="p-4 flex justify-between items-center">
+                        <span class="text-lg font-bold text-green-500">Calories: {{data.calories }} </span>
+                        <a href='{% url "fruit_detail" data.id %}'> <button class="bg-green-500 text-white py-2 px-4 rounded-lg">Learn More</button> </a>
+                    </div>
+                </div>
+
+            {% endfor %}
+            
+
+           
+        
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white text-center py-4">
+        <p>© 2024 Fruit Gallery. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
