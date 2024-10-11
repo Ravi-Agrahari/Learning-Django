@@ -1,0 +1,45 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    Twitter Replica - {{ form.instance.id|yesno:"Edit Tweet,Create a New Tweet" }}
+{% endblock %}
+
+{% block content %}
+<div class="max-w-lg mx-auto mt-8">
+    <h2 class="text-2xl font-bold mb-4">
+        {{ form.instance.id|yesno:"Edit Tweet,Create a New Tweet" }}
+    </h2>
+
+    <form method="POST" enctype="multipart/form-data" class="bg-white shadow-md rounded-lg p-6">
+        {% csrf_token %}
+        
+        <div class="mb-4">
+            <label for="text" class="block text-gray-700 text-sm font-bold mb-2">Tweet</label>
+            <textarea 
+                id="text" 
+                name="text" 
+                rows="4" 
+                placeholder="What's happening?" 
+                class="border border-gray-300 rounded-lg w-full p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >{{ form.text.value|default_if_none:"" }}</textarea>
+        </div>
+        
+        <div class="mb-4">
+            <label for="img" class="block text-gray-700 text-sm font-bold mb-2">Image (optional)</label>
+            <input 
+                type="file" 
+                id="img" 
+                name="img" 
+                class="border border-gray-300 rounded-lg w-full p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+        </div>
+        
+        <div class="flex justify-between">
+            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">
+                {{ form.instance.id|yesno:"Update Tweet,Post Tweet" }}
+            </button>
+            <a href="{% url 'tweets:tweet_list' %}" class="text-gray-500 hover:text-blue-500">Cancel</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

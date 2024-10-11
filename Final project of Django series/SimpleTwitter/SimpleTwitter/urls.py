@@ -25,6 +25,6 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("",views.home , name='home' ),
     path("about/", views.about , name='about'),
-    path("tweets/", include('tweets.urls')),
+    path('tweets/', include(('tweets.urls', 'tweets'), namespace='tweets')),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
