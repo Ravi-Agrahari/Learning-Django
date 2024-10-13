@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>
+        This is about page .... 
+    </h1>
+
+    <h2>Navigation : </h2>
+    <a href="/">Home</a> || 
+    <a href="/contact/">Contact</a>
+
+    <h3>Some info about friends :</h3>
+    
+    <table class='container text-center' >
+        <tr>
+          <th>S.N</th>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Is Teen</th>
+          
+
+        </tr>
+
+        {% for people in peoples %}
+        <tr>
+          <td>{{forloop.counter}}</td>
+          <td>{{people.name}}</td>
+          <td>{{people.age}}</td>
+          <td {% if people.age <= 19 %} class = "bg-success text-light"{% endif %}>
+            {% if people.age <= 19 %}
+                Yes
+            {% else %}
+                No
+            {% endif %}</td>
+
+        </tr>
+        {% endfor %}
+        
+      </table>
+
+
+{% endblock %}
