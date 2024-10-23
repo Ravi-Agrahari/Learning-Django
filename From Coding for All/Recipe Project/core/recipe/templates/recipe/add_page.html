@@ -1,0 +1,41 @@
+{% extends "recipe/layout.html" %}
+
+{% block tile %}
+    Add Recipe
+{% endblock %}
+
+
+{% block content %}
+
+    <div class=" main-container p-3 d-flex justify-content-center flex-column align-items-center mt-3">
+
+        <h1>Add new Recipe</h1>
+
+        <form class="col-6 mx-auto card shadow-lg p-3 mt-3" method="post" enctype="multipart/form-data">
+
+            {% csrf_token %}
+
+            <div class="mb-3">
+              <label for="recipe-title" class="form-label">Recipe Title</label>
+              <input name="title" type="text" class="form-control" id="recipe-title" placeholder="Put Recipe title here" aria-describedby="emailHelp">
+            </div>
+
+            <div class="mb-3">
+                
+                <label for="floatingTextarea">Recipe Description</label>
+                <textarea name="description" class="form-control" placeholder="Put Recipe Description here" id="floatingTextarea"></textarea>
+            </div>
+
+            <div class="mb-3">
+                <label for="formFile" class="form-label">Image of Recipe</label>
+                <input name="recipe_img" class="form-control" type="file" id="formFile">
+            </div>
+
+            
+            
+            <button type="submit" class="btn btn-success">Add Recipe</button>
+        </form>
+        
+    </div>
+
+{% endblock %}

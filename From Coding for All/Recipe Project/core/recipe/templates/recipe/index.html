@@ -1,0 +1,40 @@
+{% extends "recipe/layout.html" %}
+
+{% block title %}
+    Recipe Homepage
+{% endblock %}
+
+{% block content %}
+
+    <div class="p-3">
+        <h1>Recipes</h1>
+        <a href="{% url "add_page" %}">
+            <button type="button" class="btn btn-primary">Add new Recipe</button>
+        </a>
+
+
+    {% comment %} grid for showing recipe cards  {% endcomment %}
+
+        <div class="container text-center">
+            <h1>Recipes</h1>
+            <div class="row">
+                {% for recipe in recipes %}
+                    <div class="col mt-5">
+                        <div class="card" style="width: 18rem;">
+                            <img src="{{recipe.recipe_img.url}}" class="card-img-top" style="height: 200px; object-fit: cover;" alt="recipe image">
+                            <div class="card-body">
+                            <h5 class="card-title">{{recipe.title|truncatewords:3}}</h5>
+                            <p class="card-text">{{recipe.description|truncatewords:5}}</p>
+                            <a href="#" class="btn btn-primary">View detail</a>
+                            <a href="{% url "delete_recipe" recipe.id %}" class="text-danger">delete</a>
+                            </div>
+                        </div>  
+                    </div>
+                {% endfor %}
+            </div>
+          </div>
+    
+
+    </div>
+
+{% endblock %}
