@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.http import HttpResponse
 
 # Create your views here.
 def homeView(request):
@@ -15,3 +16,7 @@ def booktableView(request):
 
 def menuView(request):
     return render(request, 'menu_page.html')
+
+
+def feedbackView(request):
+    return HttpResponse("this is my feedback page")
